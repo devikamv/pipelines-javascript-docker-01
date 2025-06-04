@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: daridockerimage 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: daridockerimage
+  template:
+    metadata:
+      labels:
+        app: daridockerimage 
+    spec:
+      containers:
+        - name: daridockerimage 
+          image: 1dariprdacr.azurecr.io/daridockerimage
+          ports:
+          - containerPort: 8080
