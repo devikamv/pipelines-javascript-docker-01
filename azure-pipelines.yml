@@ -53,7 +53,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'devikamvpipelinesjavascriptdocker01.default'
+    environment: 'dari-prod'
     strategy:
       runOnce:
         deploy:
