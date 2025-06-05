@@ -53,7 +53,7 @@ stages:
     displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    environment: 'dari-prod'
+    environment: 'ws-prod'
     strategy:
       runOnce:
         deploy:
@@ -61,6 +61,10 @@ stages:
           - task: KubernetesManifest@0
             displayName: Create imagePullSecret
             inputs:
+              connectionType: 'Azure Resource Manager'
+              azureSubscriptionEndpoint: 'serviceconnection-ws-application'
+              azureResourceGroup: 'rg-prod-ws-uaen'
+              kubernetesCluster: 'aks-ws-prod-uaen-001'
               action: createSecret
               secretName: $(imagePullSecret)
               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
